@@ -20,5 +20,9 @@ module.exports = {
       umdNamedDefine: true,
       path: __dirname + '/dist',
       filename: 'ng-mobx.js'
+    },
+	externals: {
+      angular: 'angular',
+      mobx: 'mobx'
     }
 };
