@@ -1,5 +1,6 @@
-[![npm version](https://badge.fury.io/js/ng-mobx.svg)](https://badge.fury.io/js/ng-mobx)
-# ng-mobx
+[![npm version](https://img.shields.io/npm/v/mobx-angularjs.svg?style=flat-square)](https://www.npmjs.com/package/mobx-angularjs)
+# mobx-angularjs
+forked from [ng1-mobx](https://github.com/NgMobx/ng1-mobx)
 
 ## MobX connector for Angular 1
 If you're looking for the Angular 2 version version, it's [here](https://github.com/mobxjs/mobx-angular)
