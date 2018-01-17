@@ -13,7 +13,7 @@ function link($scope) {
   '$scope'
 ]
 
-angular.module('mobx', []).directive('autorun', () => ({
+angular.module('mobx', []).directive('mobx-autorun', () => ({
   restrict: 'A',
   scope: false,
   link
