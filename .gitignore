@@ -1,6 +1,4 @@
 /.idea
-/.test
+/.vscode
 /node_modules
-/.sass-cache
-/test/results
-dist
+/dist
