@@ -42,13 +42,9 @@ $ npm install --save mobx-angularjs
 
 Import `mobx-angularjs` and include the module:
 ```js
-import 'mobx-angularjs';
+import mobxAngularjs from 'mobx-angularjs';
 
-angular.module('app', [
-  ...
-  'mobx',
-  ...
-]);
+angular.module('app', [ mobxAngularjs ]);
 ```
 
 <br>

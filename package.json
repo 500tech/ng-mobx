@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "description": "AngularJS connector to MobX",
   "main": "dist/index.js",
+  "typings": "dist/index.d.js",
   "author": "Adam Klein",
   "license": "MIT",
   "repository": {
@@ -19,7 +20,7 @@
     "ng-mobx"
   ],
   "scripts": {
-    "build": "rimraf dist/* && tsc lib/index.ts --outDir dist/"
+    "build": "rimraf dist/* && tsc -d lib/index.ts --outDir dist/"
   },
   "devDependencies": {
     "angular": "^1.4",
