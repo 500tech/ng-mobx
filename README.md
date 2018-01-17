@@ -38,7 +38,9 @@ Install:
 $ npm install --save mobx-angularjs
 ```
 
-Import mobx-angularjs and include the module:
+<br>
+
+Import `mobx-angularjs` and include the module:
 ```js
 import 'mobx-angularjs';
 
@@ -48,6 +50,8 @@ angular.module('app', [
   ...
 ]);
 ```
+
+<br>
 
 Then use `mobx-autorun`:
 ```js
