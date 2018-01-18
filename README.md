@@ -42,7 +42,7 @@ $ npm install --save mobx-angularjs
 
 Import `mobx-angularjs` and include the module:
 ```js
-import mobxAngularjs from 'mobx-angularjs';
+import mobxAngularJS from 'mobx-angularjs';
 
 angular.module('app', [ mobxAngularjs ]);
 ```
@@ -63,4 +63,24 @@ angular.component('myComponent', {
     </div>
   `
 });
+```
+
+## Example
+
+Clone this repository:
+
+```bash
+git clone https://github.com/nickbreaton/mobx-angularjs
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start example server:
+
+```bash
+npm run example
 ```

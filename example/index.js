@@ -4,6 +4,8 @@ import 'angular'
 // import what you want from MobX
 import { action, computed, observable } from 'mobx'
 import { toWords } from 'number-to-words'
+
+// import module name from `mobx-angularjs`
 import mobxAngularJS from '../lib/mobx-angularjs'
 
 // define a MobX store
@@ -26,7 +28,7 @@ class CountStore {
 // create MobX shared store
 const count = new CountStore()
 
-// setup AngularJS app
+// setup AngularJS app with `mobx-angularjs` module
 const app = angular.module('App', [ mobxAngularJS ])
 
 // bind store to scope / controller

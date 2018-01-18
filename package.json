@@ -14,13 +14,15 @@
     "url": "https://github.com/mobxjs/mobx-angularjs/issues"
   },
   "keywords": [
-    "mobx",
     "angular",
     "angularjs",
+    "mobx-angularjs",
+    "mobx",
     "ng-mobx"
   ],
   "scripts": {
     "build": "rimraf dist/* && tsc",
+    "example": "parcel watch example/index.html",
     "test": "jest"
   },
   "peerDependencies": {
