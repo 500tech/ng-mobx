@@ -5,7 +5,7 @@ import { reaction } from 'mobx'
 const { angular }: { angular: IAngularStatic } = window as any
 
 // declare global AngularJS module name for module systems
-const moduleName = 'mobx-angularjs'
+const moduleName = 'ng-mobx'
 
 function link($scope: IScope & { $$watchers: any[] }) {
   const dispose = reaction(

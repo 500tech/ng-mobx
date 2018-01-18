@@ -1,5 +1,5 @@
 
-# mobx-angularjs
+# ng-mobx
 
 ## MobX connector for AngularJS  (version 1.x)
 If you're looking for the Angular 2+ version, it's [here](https://github.com/mobxjs/mobx-angular)
@@ -35,14 +35,14 @@ It will also dispose of the autorun callback when the scope is destroyed.
 
 Install:
 ```
-$ npm install --save mobx-angularjs
+$ npm install --save ng-mobx
 ```
 
 <br>
 
-Import `mobx-angularjs` and include the module:
+Import `ng-mobx` and include the module:
 ```js
-import mobxAngularJS from 'mobx-angularjs';
+import mobxAngularJS from 'ng-mobx';
 
 angular.module('app', [ mobxAngularjs ]);
 ```
@@ -70,8 +70,8 @@ angular.component('myComponent', {
 Clone this repository:
 
 ```bash
-git clone https://github.com/nickbreaton/mobx-angularjs
-cd mobx-angularjs
+git clone https://github.com/nickbreaton/ng-mobx
+cd ng-mobx
 ```
 
 Install dependencies:

@@ -2,7 +2,7 @@ import 'angular'
 import 'angular-mocks'
 
 import { Counter } from './fixtures/counter-store'
-import mobxAngularjs from '../lib/mobx-angularjs'
+import ngMobx from '../lib/ng-mobx'
 
 import { 
   IAngularStatic, 
@@ -17,7 +17,7 @@ let $compile: ICompileService
 let $rootScope: IRootScopeService & { [x: string]: any }
 let counter: Counter
 
-beforeEach(module(mobxAngularjs))
+beforeEach(module(ngMobx))
 
 beforeEach(() => {
   counter = new Counter()
@@ -29,7 +29,7 @@ beforeEach(() => {
 })
 
 test('module name should be exported', () => {
-  expect(mobxAngularjs).toBe('mobx-angularjs')
+  expect(ngMobx).toBe('ng-mobx')
 })
 
 test('don\'t update without `mobx-autorun` directive', () => {
