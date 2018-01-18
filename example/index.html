@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="App">
+<head>
+  <meta charset="UTF-8">
+  <title>mobx-angularjs example</title>
+</head>
+<body>
+  
+  <!--
+    Note: Buttons are outside of controller.
+  -->
+  <button id="increment">+</button>
+  <button id="decrement">-</button>
+
+  <!-- 
+    Note: `mobx-autorun` directive. Remove this to see 
+    example no longer work.
+  -->
+  <div ng-controller="AppController" mobx-autorun>
+    <p>Current Count: {{ count.word }}</p>
+  </div>
+  
+  <script src="./index.js"></script>
+</body>
+</html>
