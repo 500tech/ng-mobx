@@ -50,23 +50,38 @@ test('don\'t update without `mobx-autorun` directive', () => {
   expect(node.text()).toBe('zero')
 })
 
-test('update with `mobx-autorun` directive', () => {
-  // TODO: remove when working
-  return
+test('[TODO] update with `mobx-autorun` directive', () => {
+  // const template = `
+  //   <div mobx-autorun>{{ counter.word }}</div>
+  // `
+  // const node = $compile(template)($rootScope)
 
-  const template = `
-    <div mobx-autorun>{{ counter.word }}</div>
-  `
-  const node = $compile(template)($rootScope)
+  // $rootScope.counter = counter
+  // $rootScope.$digest()
 
-  $rootScope.counter = counter
-  $rootScope.$digest()
+  // expect(node.text()).toBe('zero')
 
-  expect(node.text()).toBe('zero')
+  // counter.increment()
+  // expect(node.text()).toBe('one')
 
-  counter.increment()
-  expect(node.text()).toBe('one')
+  // counter.increment()
+  // expect(node.text()).toBe('two')
+})
 
-  counter.increment()
-  expect(node.text()).toBe('two')
+test('[TODO] account for watchers disoriding while mapping reaction', () => {
+  /**
+   * Copy $scope.$$watchers to avoid $$watchers disordering while array mapping which 
+   * watcher.get($scope) may cause a $scope.$$watchers decrease.
+   * 
+   * @see https://github.com/angular/angular.js/blob/master/src/ng/rootScope.js#L428
+  */
+})
+
+test('[TODO] #3', () => {
+  // https://github.com/NgMobx/ng1-mobx/issues/3
+})
+
+test('[TODO] #4', () => {
+  // https://github.com/NgMobx/ng1-mobx/issues/4
+  // aka test with multiple MobX versions
 })
