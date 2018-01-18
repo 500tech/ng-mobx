@@ -34,8 +34,4 @@ angular.module(moduleName, []).directive('mobxAutorun', () => ({
   link
 }))
 
-// export for ECMAScript modules
 export default moduleName
-
-// export for CommonJS
-module.exports = moduleName
