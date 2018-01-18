@@ -1,8 +1,7 @@
 import 'angular'
 import 'angular-mocks'
 
-import { action, computed, observable } from 'mobx'
-import { toWords } from 'number-to-words'
+import { Counter } from './fixtures/counter-store'
 import mobxAngularjs from '../lib/mobx-angularjs'
 
 import { 
@@ -17,18 +16,6 @@ const { module, inject } = angular.mock
 let $compile: ICompileService
 let $rootScope: IRootScopeService & { [x: string]: any }
 let counter: Counter
-
-class Counter {
-  @observable value = 0
-
-  @action increment() {
-    this.value++
-  }
-
-  @computed get word() {
-    return toWords(this.value)
-  }
-}
 
 beforeEach(module(mobxAngularjs))
 
@@ -45,7 +32,7 @@ test('module name should be exported', () => {
   expect(mobxAngularjs).toBe('mobx-angularjs')
 })
 
-test('don\'t update without `mobx-autorun` direction', () => {
+test('don\'t update without `mobx-autorun` directive', () => {
   const template = `
     <div>{{ counter.word }}</div>
   `
@@ -63,7 +50,7 @@ test('don\'t update without `mobx-autorun` direction', () => {
   expect(node.text()).toBe('zero')
 })
 
-test('update with `mobx-autorun` direction', () => {
+test('update with `mobx-autorun` directive', () => {
   const template = `
     <div mobx-autorun>{{ counter.word }}</div>
   `
