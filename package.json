@@ -8,10 +8,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nickbreaton/ng-mobx.git"
+    "url": "git+https://github.com/NgMobx/ng1-mobx.git"
   },
   "bugs": {
-    "url": "https://github.com/nickbreaton/ng-mobx/issues"
+    "url": "https://github.com/NgMobx/ng1-mobx/issues"
   },
   "keywords": [
     "angular",
