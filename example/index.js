@@ -4,9 +4,7 @@ import 'angular'
 // import what you want from MobX
 import { action, computed, observable } from 'mobx'
 import { toWords } from 'number-to-words'
-
-// import module name from `mobx-angularjs`
-import mobxAngularJS from '../lib/mobx-angularjs'
+import mobxAngularJS from 'mobx-angularjs'
 
 // define a MobX store
 class CountStore {
