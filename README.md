@@ -71,6 +71,7 @@ Clone this repository:
 
 ```bash
 git clone https://github.com/nickbreaton/mobx-angularjs
+cd mobx-angularjs
 ```
 
 Install dependencies:
@@ -84,3 +85,5 @@ Start example server:
 ```bash
 npm run example
 ```
+
+__Note:__ Example uses [parcel](https://parceljs.org/) which requires Node 8+

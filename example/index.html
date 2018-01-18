@@ -3,23 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <title>mobx-angularjs example</title>
+  <style>
+    * { font-size: 1.25rem; font-family: monospace; }
+  </style>
 </head>
 <body>
   
   <!--
-    Note: Buttons are outside of controller.
-  -->
-  <button id="increment">+</button>
-  <button id="decrement">-</button>
-
-  <!-- 
     Note: `mobx-autorun` directive. Remove this to see 
     example no longer work.
   -->
   <div ng-controller="AppController" mobx-autorun>
     <p>Current Count: {{ count.word }}</p>
   </div>
-  
+
+  <!--
+    Note: Buttons are outside of controller.
+  -->
+  <button id="increment">+</button>
+  <button id="decrement">-</button>
+
   <script src="./index.js"></script>
 </body>
 </html>

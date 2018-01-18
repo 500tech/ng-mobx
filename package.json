@@ -22,7 +22,7 @@
   ],
   "scripts": {
     "build": "rimraf dist/* && tsc",
-    "example": "parcel watch example/index.html",
+    "example": "parcel -o example/index.html",
     "test": "jest"
   },
   "peerDependencies": {
