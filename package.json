@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "description": "AngularJS connector to MobX",
   "main": "dist/ng-mobx.js",
-  "typings": "dist/ng-mobx.d.js",
+  "typings": "dist/ng-mobx.d.ts",
   "author": "Adam Klein",
   "license": "MIT",
   "repository": {
