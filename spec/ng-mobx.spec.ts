@@ -2,35 +2,25 @@
 import 'angular'
 import 'angular-mocks'
 
-// import testing dependencies
 import { Count } from './fixtures/count-store'
 import { IAngularStatic, ICompileService, IScope } from 'angular'
 import ngMobx from '../lib/ng-mobx'
 
-// import angular from window as type
-const { angular }: { angular: IAngularStatic } = window as any
+declare const angular: IAngularStatic
 
-// define shared vars
 let scope: IScope, compile: ICompileService, count: Count;
 
 beforeEach(() => {
-  // enable mocking for ng-mobx module
   angular.mock.module(ngMobx)
 
-  // mock dependencies
   angular.mock.inject(($compile, $rootScope) => {
     compile = $compile
     scope = $rootScope.$new()
   })
 
-  // setup fake timers in jest to run timers synchronously
   jest.useFakeTimers()
 
-  // create observable store
-  count = new Count()
-
-  // attach store to scope
-  scope['count'] = count
+  scope['count'] = count = new Count()
 })
 
 test('correct module name should be exported', () => {
