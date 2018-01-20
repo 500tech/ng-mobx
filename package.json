@@ -47,8 +47,13 @@
     "typescript": "^2.6.2"
   },
   "jest": {
-    "transform": { "^.+\\.ts$": "ts-jest" },
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
     "testRegex": "^.+\\.spec\\.(js|ts)$",
-    "moduleFileExtensions": ["js", "ts"]
+    "moduleFileExtensions": [
+      "js",
+      "ts"
+    ]
   }
 }
