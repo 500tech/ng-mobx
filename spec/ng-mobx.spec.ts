@@ -1,100 +1,79 @@
+// add angular and angular mocks to window object
 import 'angular'
 import 'angular-mocks'
 
+// import testing dependencies
 import { Count } from './fixtures/count-store'
+import { IAngularStatic, ICompileService, IScope } from 'angular'
 import ngMobx from '../lib/ng-mobx'
 
-import { 
-  IAngularStatic, 
-  ICompileService,
-  IScope
-} from 'angular'
-
+// import angular from window as type
 const { angular }: { angular: IAngularStatic } = window as any
-const { module, inject } = angular.mock
-import { observable, reaction } from 'mobx'
 
-beforeEach(module(ngMobx))
+// define shared vars
+let scope: IScope, compile: ICompileService, count: Count;
 
-test('template should react to `mobx-autorun` directive', 
-  inject(($rootScope, $compile) => {
-    jest.useFakeTimers()
-    
-    const element = angular.element(`
-      <div mobx-autorun>{{ hello.word }}</div>
-    `)
-    const scope = $rootScope.$new()
+beforeEach(() => {
+  // enable mocking for ng-mobx module
+  angular.mock.module(ngMobx)
 
-    scope.hello = new Count()
-    
-    // scope.hello.set('bob')
-
-    $compile(element)(scope)
-    scope.$digest()
-
-    expect(element.text()).toBe('zero')
-
-    scope.hello.increment()
-
-    jest.runAllTimers()
-    expect(element.text()).toBe('one')
+  // mock dependencies
+  angular.mock.inject(($compile, $rootScope) => {
+    compile = $compile
+    scope = $rootScope.$new()
   })
-)
 
-// test('module name should be exported', () => {
-//   expect(ngMobx).toBe('ng-mobx')
-// })
+  // setup fake timers in jest to run timers synchronously
+  jest.useFakeTimers()
 
-// test('template should react to `mobx-autorun` directive', () => {
-//   const template = `
-//     <div>{{ count.word }}</div>
-//   `
-//   const node = $compile(template)($rootScope)
+  // create observable store
+  count = new Count()
 
-//   $rootScope.count = count
-//   $rootScope.$digest()
+  // attach store to scope
+  scope['count'] = count
+})
 
-//   expect(node.text()).toBe('zero')
+test('correct module name should be exported', () => {
+  expect(ngMobx).toBe('ng-mobx')
+})
 
-//   count.increment()
-//   expect(node.text()).toBe('zero')
+test('template should react to `mobx-autorun` directive', () => {
+  const element = angular.element(`
+    <div mobx-autorun>{{ count.word }}</div>
+  `)
 
-//   count.increment()
-//   expect(node.text()).toBe('zero')
-// })
+  compile(element)(scope)
+  scope.$digest()
 
-// test('[TODO] update with `mobx-autorun` directive', () => {
-//   // const template = `
-//   //   <div mobx-autorun>{{ count.word }}</div>
-//   // `
-//   // const node = $compile(template)($rootScope)
+  expect(element.text()).toBe(count.word)
 
-//   // $rootScope.count = count
-//   // $rootScope.$digest()
+  count.increment()
 
-//   // expect(node.text()).toBe('zero')
+  jest.runAllTimers()
+  expect(element.text()).toBe(count.word)
+})
 
-//   // count.increment()
-//   // expect(node.text()).toBe('one')
+test('template should not react without `mobx-autorun` directive', () => {
+  const element = angular.element(`
+    <div>{{ count.word }}</div>
+  `)
 
-//   // count.increment()
-//   // expect(node.text()).toBe('two')
-// })
+  compile(element)(scope)
+  scope.$digest()
 
-// test('[TODO] account for watchers disoriding while mapping reaction', () => {
-//   /**
-//    * Copy $scope.$$watchers to avoid $$watchers disordering while array mapping which 
-//    * watcher.get($scope) may cause a $scope.$$watchers decrease.
-//    * 
-//    * @see https://github.com/angular/angular.js/blob/master/src/ng/rootScope.js#L428
-//   */
-// })
+  expect(element.text()).toBe(count.word)
 
-// test('[TODO] #3', () => {
-//   // https://github.com/NgMobx/ng1-mobx/issues/3
-// })
+  count.increment()
+  
+  jest.runAllTimers()
+  expect(element.text()).not.toBe(count.word)
+})
 
-// test('[TODO] #4', () => {
-//   // https://github.com/NgMobx/ng1-mobx/issues/4
-//   // aka test with multiple MobX versions
-// })
+test('[TODO] #3', () => {
+  // https://github.com/NgMobx/ng1-mobx/issues/3
+})
+
+test('[TODO] #4', () => {
+  // https://github.com/NgMobx/ng1-mobx/issues/4
+  // aka test with multiple MobX versions
+})
