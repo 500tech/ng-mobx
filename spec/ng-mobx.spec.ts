@@ -1,80 +1,72 @@
+// add angular and angular mocks to window object
 import 'angular'
 import 'angular-mocks'
 
-import { Counter } from './fixtures/counter-store'
+// import testing dependencies
+import { Count } from './fixtures/count-store'
+import { IAngularStatic, ICompileService, IScope } from 'angular'
 import ngMobx from '../lib/ng-mobx'
 
-import { 
-  IAngularStatic, 
-  ICompileService,
-  IRootScopeService 
-} from 'angular'
-
+// import angular from window as type
 const { angular }: { angular: IAngularStatic } = window as any
-const { module, inject } = angular.mock
 
-let $compile: ICompileService
-let $rootScope: IRootScopeService & { [x: string]: any }
-let counter: Counter
-
-beforeEach(module(ngMobx))
+// define shared vars
+let scope: IScope, compile: ICompileService, count: Count;
 
 beforeEach(() => {
-  counter = new Counter()
+  // enable mocking for ng-mobx module
+  angular.mock.module(ngMobx)
 
-  inject((_$compile_, _$rootScope_) => {
-    $compile = _$compile_
-    $rootScope = _$rootScope_
+  // mock dependencies
+  angular.mock.inject(($compile, $rootScope) => {
+    compile = $compile
+    scope = $rootScope.$new()
   })
+
+  // setup fake timers in jest to run timers synchronously
+  jest.useFakeTimers()
+
+  // create observable store
+  count = new Count()
+
+  // attach store to scope
+  scope['count'] = count
 })
 
-test('module name should be exported', () => {
+test('correct module name should be exported', () => {
   expect(ngMobx).toBe('ng-mobx')
 })
 
-test('don\'t update without `mobx-autorun` directive', () => {
-  const template = `
-    <div>{{ counter.word }}</div>
-  `
-  const node = $compile(template)($rootScope)
+test('template should react to `mobx-autorun` directive', () => {
+  const element = angular.element(`
+    <div mobx-autorun>{{ count.word }}</div>
+  `)
 
-  $rootScope.counter = counter
-  $rootScope.$digest()
+  compile(element)(scope)
+  scope.$digest()
 
-  expect(node.text()).toBe('zero')
+  expect(element.text()).toBe(count.word)
 
-  counter.increment()
-  expect(node.text()).toBe('zero')
+  count.increment()
 
-  counter.increment()
-  expect(node.text()).toBe('zero')
+  jest.runAllTimers()
+  expect(element.text()).toBe(count.word)
 })
 
-test('[TODO] update with `mobx-autorun` directive', () => {
-  // const template = `
-  //   <div mobx-autorun>{{ counter.word }}</div>
-  // `
-  // const node = $compile(template)($rootScope)
+test('template should not react without `mobx-autorun` directive', () => {
+  const element = angular.element(`
+    <div>{{ count.word }}</div>
+  `)
 
-  // $rootScope.counter = counter
-  // $rootScope.$digest()
+  compile(element)(scope)
+  scope.$digest()
 
-  // expect(node.text()).toBe('zero')
+  expect(element.text()).toBe(count.word)
 
-  // counter.increment()
-  // expect(node.text()).toBe('one')
-
-  // counter.increment()
-  // expect(node.text()).toBe('two')
-})
-
-test('[TODO] account for watchers disoriding while mapping reaction', () => {
-  /**
-   * Copy $scope.$$watchers to avoid $$watchers disordering while array mapping which 
-   * watcher.get($scope) may cause a $scope.$$watchers decrease.
-   * 
-   * @see https://github.com/angular/angular.js/blob/master/src/ng/rootScope.js#L428
-  */
+  count.increment()
+  
+  jest.runAllTimers()
+  expect(element.text()).not.toBe(count.word)
 })
 
 test('[TODO] #3', () => {
