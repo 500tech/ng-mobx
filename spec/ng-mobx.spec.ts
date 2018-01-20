@@ -1,7 +1,7 @@
 import 'angular'
 import 'angular-mocks'
 
-import { Counter } from './fixtures/counter-store'
+import { Count } from './fixtures/count-store'
 import ngMobx from '../lib/ng-mobx'
 
 import { 
@@ -15,12 +15,12 @@ const { module, inject } = angular.mock
 
 let $compile: ICompileService
 let $rootScope: IRootScopeService & { [x: string]: any }
-let counter: Counter
+let count: Count
 
 beforeEach(module(ngMobx))
 
 beforeEach(() => {
-  counter = new Counter()
+  count = new Count()
 
   inject((_$compile_, _$rootScope_) => {
     $compile = _$compile_
@@ -34,37 +34,37 @@ test('module name should be exported', () => {
 
 test('don\'t update without `mobx-autorun` directive', () => {
   const template = `
-    <div>{{ counter.word }}</div>
+    <div>{{ count.word }}</div>
   `
   const node = $compile(template)($rootScope)
 
-  $rootScope.counter = counter
+  $rootScope.count = count
   $rootScope.$digest()
 
   expect(node.text()).toBe('zero')
 
-  counter.increment()
+  count.increment()
   expect(node.text()).toBe('zero')
 
-  counter.increment()
+  count.increment()
   expect(node.text()).toBe('zero')
 })
 
 test('[TODO] update with `mobx-autorun` directive', () => {
   // const template = `
-  //   <div mobx-autorun>{{ counter.word }}</div>
+  //   <div mobx-autorun>{{ count.word }}</div>
   // `
   // const node = $compile(template)($rootScope)
 
-  // $rootScope.counter = counter
+  // $rootScope.count = count
   // $rootScope.$digest()
 
   // expect(node.text()).toBe('zero')
 
-  // counter.increment()
+  // count.increment()
   // expect(node.text()).toBe('one')
 
-  // counter.increment()
+  // count.increment()
   // expect(node.text()).toBe('two')
 })
 

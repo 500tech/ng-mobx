@@ -1,7 +1,7 @@
 import { action, computed, observable } from 'mobx'
 import { toWords } from 'number-to-words'
 
-export class Counter {
+export class Count {
   @observable value = 0
 
   @action increment() {
