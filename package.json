@@ -25,6 +25,11 @@
     "example": "parcel -o example/index.html",
     "test": "jest"
   },
+  "dependencies": {
+    "cuid": "^2.0.2",
+    "lodash.flattendeep": "^4.4.0",
+    "lodash.map": "^4.6.0"
+  },
   "peerDependencies": {
     "mobx": "*"
   },

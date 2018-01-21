@@ -14,8 +14,15 @@
     example no longer work.
   -->
   <div ng-controller="AppController" mobx-autorun>
-    <p>Current Count: {{ count.word }}</p>
+    <div >
+        <p ng-if="val">{{ count.word }}</p>
+        <p ng-if="!val">{{ count.value }}</p>
+    
+    </div>
+  <p>{{ count.value }}</p>
+    
   </div>
+
 
   <!--
     Note: Buttons are outside of controller.

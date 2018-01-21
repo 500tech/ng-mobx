@@ -4,7 +4,7 @@ import 'angular'
 // import what you want from MobX
 import { action, computed, observable } from 'mobx'
 import { toWords } from 'number-to-words'
-import ngMobx from 'ng-mobx'
+import ngMobx from '../lib/ng-mobx'
 
 // define a MobX store
 class CountStore {
@@ -30,8 +30,12 @@ const count = new CountStore()
 const app = angular.module('App', [ ngMobx ])
 
 // bind store to scope / controller
-app.controller('AppController', function ($scope) {
+app.controller('AppController', function ($scope, $interval) {
   $scope.count = count
+  $scope.val = true
+  $interval(() => {
+    $scope.val = !$scope.val
+  }, 2000)
 })
 
 // update store outside of angular digest cycle
