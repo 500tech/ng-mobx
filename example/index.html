@@ -13,12 +13,12 @@
     Note: `mobx-autorun` directive. Remove this to see 
     example no longer work.
   -->
-  <div ng-controller="AppController">
+  <div ng-controller="AppController" mobx-autorun>
     <div>
-      <p ng-if="val" mobx-autorun>{{ count.word }}</p>
+      <p ng-if="val">{{ count.word }}</p>
       <p ng-if="!val">{{ count.value }}</p>
     </div>
-  <p>{{ count.value }}</p>
+  <!-- <p>{{ count.value }}</p> -->
     
   </div>
 

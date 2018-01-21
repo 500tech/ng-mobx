@@ -1,4 +1,4 @@
-import { angular } from './utils/angular'
+import { angular } from './utils/vendor'
 import { getWatcherMetadata, IWatcherMetadata } from './utils/watcher-list'
 import { IDirectiveLinkFn, IScope } from 'angular'
 import { observable, reaction } from 'mobx'

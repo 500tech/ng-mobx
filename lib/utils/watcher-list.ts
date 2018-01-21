@@ -1,6 +1,4 @@
-import { angular } from './angular'
-import { cuid } from './cuid'
-import { flattenDeep, map } from './lodash'
+import { angular, cuid, flattenDeep, map } from './vendor'
 import { IReactionDisposer } from 'mobx'
 import { IScope } from 'angular'
 
