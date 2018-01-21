@@ -39,8 +39,8 @@ test('template should react to `mobx-autorun` directive', () => {
   expect(element.text()).toBe(count.word)
 
   count.increment()
-
   jest.runAllTimers()
+
   expect(element.text()).toBe(count.word)
 })
 
@@ -55,13 +55,34 @@ test('template should not react without `mobx-autorun` directive', () => {
   expect(element.text()).toBe(count.word)
 
   count.increment()
-  
-  jest.runAllTimers()
+  jest.runAllTimers()  
+
   expect(element.text()).not.toBe(count.word)
 })
 
-test('[TODO] #3', () => {
-  // https://github.com/NgMobx/ng1-mobx/issues/3
+test('all child scopes of `mobx-autorun` directive should render', () => {
+  const element = angular.element(`
+    <div mobx-autorun>
+      <p ng-if="condition">{{ count.word }}</p>
+    </div>
+  `)
+
+  scope['condition'] = false
+  
+  compile(element)(scope)
+  scope.$digest()
+  
+  expect(element.find('p').text()).toBe('')
+
+  scope['condition'] = true
+  scope.$digest()
+
+  expect(element.find('p').text()).toBe(count.word)
+
+  count.increment()
+  jest.runAllTimers()  
+  
+  expect(element.find('p').text()).toBe(count.word)
 })
 
 test('[TODO] #4', () => {

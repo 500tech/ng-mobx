@@ -27,6 +27,7 @@ const link: IDirectiveLinkFn = (scope, element) => {
   })
 
   // add potential untracked watchers when scope changes
+  //   addresses: https://github.com/NgMobx/ng1-mobx/issues/3
   scope.$watch(debounce(
     () => addToWatchers(getWatcherMetadata(element)), 
     (1000 / 60)
