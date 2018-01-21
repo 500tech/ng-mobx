@@ -1,7 +1,8 @@
 import { angular } from './angular'
 import { cuid } from './cuid'
-import { IScope, IAngularStatic } from 'angular'
 import { flattenDeep, map } from './lodash'
+import { IReactionDisposer } from 'mobx'
+import { IScope } from 'angular'
 
 // TYPES
 
@@ -14,6 +15,7 @@ export interface IWatcherMetadata {
   scope: IScope
   element: JQLite
   watcher: IWatcher
+  dispose?: IReactionDisposer
 }
 
 // PUBLIC FUNCTIONS
