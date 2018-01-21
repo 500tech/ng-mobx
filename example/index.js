@@ -14,6 +14,10 @@ class CountStore {
     return toWords(this.value)
   }
 
+  wordMultiple(x) {
+    return toWords(this.value * x)
+  }
+
   @action increment() {
     this.value++
   }

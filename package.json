@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "cuid": "^2.0.2",
+    "lodash.debounce": "^4.0.8",
     "lodash.flattendeep": "^4.4.0",
     "lodash.map": "^4.6.0"
   },

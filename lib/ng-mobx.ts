@@ -1,7 +1,7 @@
-import { angular } from './utils/vendor'
+import { angular, debounce } from './utils/vendor'
 import { getWatcherMetadata, IWatcherMetadata } from './utils/watcher-list'
 import { IDirectiveLinkFn, IScope } from 'angular'
-import { observable, reaction } from 'mobx'
+import { observable, reaction, IMapChangeAdd } from 'mobx'
 
 const module = angular.module('ng-mobx', [])
 
@@ -21,21 +21,16 @@ const link: IDirectiveLinkFn = (scope, element) => {
     )
     // dispose reaction and purge watcher from known references
     datum.scope.$on('$destroy', () => {
-      if (datum.dispose) datum.dispose()
+      datum.dispose()
       delete watchers[datum.watcher.$$tag]
     })
   })
 
-  // get watchers on directive link
-  const initialWatchers = getWatcherMetadata(element)
-
-  // add initial to known watchers
-  addToWatchers(initialWatchers)
-
-  // TODO: maybe add this to add to watchers function to keep track of entire stack?
-  initialWatchers.forEach(meta => meta.scope.$watch(scope => {
-    addToWatchers(getWatcherMetadata(element))
-  }))
+  // add potential untracked watchers when scope changes
+  scope.$watch(debounce(
+    () => addToWatchers(getWatcherMetadata(element)), 
+    (1000 / 60)
+  ))
 
   // dispose of all known watchers on desctruction of directive
   scope.$on('$destroy', () => {
@@ -47,7 +42,7 @@ const link: IDirectiveLinkFn = (scope, element) => {
 }
 
 module.directive('mobxAutorun', () => ({
-  restrict: 'A',
+  restrict: 'AE',
   scope: true,
   link
 }))

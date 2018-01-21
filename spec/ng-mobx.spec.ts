@@ -10,6 +10,9 @@ declare const angular: IAngularStatic
 
 let scope: IScope, compile: ICompileService, count: Count;
 
+jest.useFakeTimers()
+jest.mock('lodash.debounce', () => fn => fn)
+
 beforeEach(() => {
   angular.mock.module(ngMobx)
 
@@ -17,8 +20,6 @@ beforeEach(() => {
     compile = $compile
     scope = $rootScope.$new()
   })
-
-  jest.useFakeTimers()
 
   scope['count'] = count = new Count()
 })
