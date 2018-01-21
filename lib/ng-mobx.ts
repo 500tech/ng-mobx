@@ -1,43 +1,44 @@
-import { angular, debounce } from './utils/vendor'
-import { getWatcherMetadata, IWatcherMetadata } from './utils/watcher-list'
+import { debounce } from './vendor/lodash'
+import { getWatcherGroups, IWatcherGroup } from './util/watchers'
 import { IDirectiveLinkFn, IScope } from 'angular'
 import { observable, reaction, IMapChangeAdd } from 'mobx'
+import angular from './vendor/angular'
 
 const module = angular.module('ng-mobx', [])
 
 const link: IDirectiveLinkFn = (scope, element) => {
   // keep references to known watchers by `$$tag` assigned to watcher object
-  const watchers: { [tag: string]: IWatcherMetadata } = {}
+  const watcherGroups: { [tag: string]: IWatcherGroup } = {}
   
-  const addToWatchers = (meta: IWatcherMetadata[]) => meta.forEach(datum => {
+  const addToWatchers = (groups: IWatcherGroup[]) => groups.forEach(watcherGroup => {
     // already have reference to watcher, break
-    if (watchers[datum.watcher.$$tag]) return
+    if (watcherGroups[watcherGroup.watcher.$$tag]) return
     // save reference to new watcher
-    watchers[datum.watcher.$$tag] = datum
+    watcherGroups[watcherGroup.watcher.$$tag] = watcherGroup
     // update scope associated with watcher on change
-    datum.dispose = reaction(
-      () => datum.watcher.get(datum.scope),
-      () => setTimeout(datum.scope.$digest.bind(datum.scope))
+    watcherGroup.dispose = reaction(
+      () => watcherGroup.watcher.get(watcherGroup.scope),
+      () => setTimeout(watcherGroup.scope.$digest.bind(watcherGroup.scope))
     )
     // dispose reaction and purge watcher from known references
-    datum.scope.$on('$destroy', () => {
-      datum.dispose()
-      delete watchers[datum.watcher.$$tag]
+    watcherGroup.scope.$on('$destroy', () => {
+      watcherGroup.dispose()
+      delete watcherGroups[watcherGroup.watcher.$$tag]
     })
   })
 
   // add potential untracked watchers when scope changes
   //   addresses: https://github.com/NgMobx/ng1-mobx/issues/3
   scope.$watch(debounce(
-    () => addToWatchers(getWatcherMetadata(element)), 
+    () => addToWatchers(getWatcherGroups(element)), 
     (1000 / 60)
   ))
 
   // dispose of all known watchers on desctruction of directive
   scope.$on('$destroy', () => {
-    for (let tag in watchers) {
-      if (watchers[tag].dispose) watchers[tag].dispose()
-      delete watchers[tag]
+    for (let tag in watcherGroups) {
+      if (watcherGroups[tag].dispose) watcherGroups[tag].dispose()
+      delete watcherGroups[tag]
     }
   })
 }

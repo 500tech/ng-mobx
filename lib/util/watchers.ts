@@ -1,6 +1,8 @@
-import { angular, cuid, flattenDeep, map } from './vendor'
+import { flattenDeep, map } from '../vendor/lodash'
 import { IReactionDisposer } from 'mobx'
 import { IScope } from 'angular'
+import angular from '../vendor/angular'
+import cuid from '../vendor/cuid'
 
 // TYPES
 
@@ -9,7 +11,7 @@ export interface IWatcher {
   $$tag?: string // will be used to save reference to a map for quick lookup
 }
 
-export interface IWatcherMetadata {
+export interface IWatcherGroup {
   scope: IScope
   element: JQLite
   watcher: IWatcher
@@ -18,15 +20,15 @@ export interface IWatcherMetadata {
 
 // PUBLIC FUNCTIONS
 
-export function getWatcherMetadata(element: JQLite): IWatcherMetadata[] {
+export function getWatcherGroups(element: JQLite): IWatcherGroup[] {
   // convert scopes to watcher metadata list
   const scopeList = [ element.data().$scope, element.data().$isolateScope ].map(
-    scope => getWatchersFromScope(scope).map(createWatcherMetadata(element, scope))
+    scope => getWatchersFromScope(scope).map(createWatcherGroup(element, scope))
   )
   // recurse children to find more watchers
   const childList = map(
     element.children(),
-    child => getWatcherMetadata(angular.element(child))
+    child => getWatcherGroups(angular.element(child))
   )
   // flatten all children
   return flattenDeep([ scopeList, childList ])
@@ -38,8 +40,8 @@ function getWatchersFromScope(scope: IScope): IWatcher[] {
   return (scope as any || {}).$$watchers || []
 }
 
-function createWatcherMetadata(element: JQLite, scope: IScope) {
-  return (watcher: IWatcher): IWatcherMetadata => {
+function createWatcherGroup(element: JQLite, scope: IScope) {
+  return (watcher: IWatcher): IWatcherGroup => {
     if (!watcher.$$tag) watcher.$$tag = cuid()
     return { element, scope, watcher }
   }
