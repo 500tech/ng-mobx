@@ -1,14 +1,12 @@
-// add angular and angular mocks to window object
-import 'angular'
-import 'angular-mocks'
-
 import { Count } from './fixtures/count-store'
-import { IAngularStatic, ICompileService, IScope } from 'angular'
+import * as angular from 'angular'
 import ngMobx from '../lib/ng-mobx'
 
-declare const angular: IAngularStatic
+import 'angular-mocks'
 
-let scope: IScope, compile: ICompileService, count: Count;
+let count: Count;
+let compile: angular.ICompileService; 
+let scope: angular.IScope;
 
 beforeEach(() => {
   angular.mock.module(ngMobx)

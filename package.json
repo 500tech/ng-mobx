@@ -22,10 +22,11 @@
   ],
   "scripts": {
     "build": "rimraf dist/* && tsc",
-    "example": "parcel -o example/index.html",
+    "example": "parcel example/index.html -o --no-cache --no-hmr -d node_modules/.example",
     "test": "jest"
   },
   "peerDependencies": {
+    "angular": ">=1.4.0",
     "mobx": ">=2.2.0"
   },
   "devDependencies": {

@@ -1,11 +1,9 @@
-import { IAngularStatic, IDirectiveLinkFn } from 'angular'
 import { reaction } from 'mobx'
-
-const angular: IAngularStatic = (window as any).angular
+import * as angular from 'angular'
 
 const module = angular.module('ng-mobx', [])
 
-const link: IDirectiveLinkFn = ($scope) => {
+const link: angular.IDirectiveLinkFn = ($scope) => {
   const { $$watchers = [] } = $scope as any
 
   const dispose = reaction(

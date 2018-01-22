@@ -1,9 +1,7 @@
-// attach `angular` to the window
-import 'angular'
-
 // import what you want from MobX
 import { action, computed, observable } from 'mobx'
 import { toWords } from 'number-to-words'
+import angular from 'angular'
 import ngMobx from 'ng-mobx'
 
 // define a MobX store
