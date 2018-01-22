@@ -1,17 +1,17 @@
 {
-  "name": "ng-mobx",
+  "name": "mobx-angularjs",
   "version": "2.0.0",
   "description": "AngularJS connector to MobX",
-  "main": "dist/ng-mobx.js",
-  "typings": "dist/ng-mobx.d.ts",
+  "main": "dist/mobx-angularjs.js",
+  "typings": "dist/mobx-angularjs.d.ts",
   "author": "Adam Klein",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NgMobx/ng1-mobx.git"
+    "url": "git+https://github.com/mobxjs/mobx-angularjs.git"
   },
   "bugs": {
-    "url": "https://github.com/NgMobx/ng1-mobx/issues"
+    "url": "https://github.com/mobxjs/mobx-angularjs/issues"
   },
   "keywords": [
     "angular",

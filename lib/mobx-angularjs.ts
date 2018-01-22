@@ -1,7 +1,7 @@
 import { reaction } from 'mobx'
 import * as angular from 'angular'
 
-const module = angular.module('ng-mobx', [])
+const module = angular.module('mobx-angularjs', [])
 
 const link: angular.IDirectiveLinkFn = ($scope) => {
   const { $$watchers = [] } = $scope as any

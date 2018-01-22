@@ -1,6 +1,6 @@
 import { Count } from './fixtures/count-store'
 import * as angular from 'angular'
-import ngMobx from '../lib/ng-mobx'
+import ngMobx from '../lib/mobx-angularjs'
 
 import 'angular-mocks'
 
@@ -22,7 +22,7 @@ beforeEach(() => {
 })
 
 test('correct module name should be exported', () => {
-  expect(ngMobx).toBe('ng-mobx')
+  expect(ngMobx).toBe('mobx-angularjs')
 })
 
 test('template should react to `mobx-autorun` directive', () => {
@@ -58,5 +58,5 @@ test('template should not react without `mobx-autorun` directive', () => {
 })
 
 test('[TODO] #3', () => {
-  // https://github.com/NgMobx/ng1-mobx/issues/3
+  // https://github.com/mobxjs/mobx-angularjs/issues/3
 })
