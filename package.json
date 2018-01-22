@@ -22,7 +22,7 @@
   ],
   "scripts": {
     "build": "rimraf dist/* && tsc",
-    "example": "parcel -o example/index.html",
+    "example": "parcel --no-cache --no-hmr -o -d node_modules/.example example/index.html",
     "test": "jest"
   },
   "dependencies": {
