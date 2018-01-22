@@ -26,7 +26,7 @@
     "test": "jest"
   },
   "peerDependencies": {
-    "mobx": "*"
+    "mobx": ">=2.2.0"
   },
   "devDependencies": {
     "@types/angular": "^1.6.40",
