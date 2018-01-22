@@ -62,8 +62,3 @@ test('template should not react without `mobx-autorun` directive', () => {
 test('[TODO] #3', () => {
   // https://github.com/NgMobx/ng1-mobx/issues/3
 })
-
-test('[TODO] #4', () => {
-  // https://github.com/NgMobx/ng1-mobx/issues/4
-  // aka test with multiple MobX versions
-})
