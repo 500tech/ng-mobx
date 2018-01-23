@@ -1,5 +1,7 @@
-
 # mobx-angularjs
+
+[![npm version](https://img.shields.io/npm/v/mobx-angularjs.svg?style=flat-square)](https://www.npmjs.com/package/mobx-angularjs)
+[![npm version](https://img.shields.io/npm/dw/mobx-angularjs.svg?style=flat-square)](https://www.npmjs.com/package/mobx-angularjs)
 
 ## AngularJS connector to MobX
 This package is for Angular 1.x, if you're looking for the Angular 2+ version, it's [here](https://github.com/mobxjs/mobx-angular).
@@ -42,9 +44,9 @@ $ npm install --save mobx-angularjs
 
 Import `mobx-angularjs` and include the module:
 ```js
-import ngMobx from 'mobx-angularjs';
+import mobxAngular from 'mobx-angularjs';
 
-angular.module('app', [ ngMobx ]);
+angular.module('app', [ mobxAngular ]);
 ```
 
 <br>

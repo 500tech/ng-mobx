@@ -1,6 +1,6 @@
 {
   "name": "mobx-angularjs",
-  "version": "2.0.0",
+  "version": "1.4.0",
   "description": "AngularJS connector to MobX",
   "main": "dist/mobx-angularjs.js",
   "typings": "dist/mobx-angularjs.d.ts",

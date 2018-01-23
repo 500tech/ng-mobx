@@ -1,15 +1,15 @@
 import { Count } from './fixtures/count-store'
 import * as angular from 'angular'
-import ngMobx from '../lib/mobx-angularjs'
+import mobxAngular from '../lib/mobx-angularjs'
 
 import 'angular-mocks'
 
-let count: Count;
-let compile: angular.ICompileService; 
-let scope: angular.IScope;
+let count: Count
+let compile: angular.ICompileService
+let scope: angular.IScope
 
 beforeEach(() => {
-  angular.mock.module(ngMobx)
+  angular.mock.module(mobxAngular)
 
   angular.mock.inject(($compile, $rootScope) => {
     compile = $compile
@@ -22,7 +22,7 @@ beforeEach(() => {
 })
 
 test('correct module name should be exported', () => {
-  expect(ngMobx).toBe('mobx-angularjs')
+  expect(mobxAngular).toBe('mobx-angularjs')
 })
 
 test('template should react to `mobx-autorun` directive', () => {
@@ -55,8 +55,4 @@ test('template should not react without `mobx-autorun` directive', () => {
   
   jest.runAllTimers()
   expect(element.text()).not.toBe(count.word)
-})
-
-test('[TODO] #3', () => {
-  // https://github.com/mobxjs/mobx-angularjs/issues/3
 })
