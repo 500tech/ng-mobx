@@ -1,11 +1,10 @@
-[![npm version](https://badge.fury.io/js/ng-mobx.svg)](https://badge.fury.io/js/ng-mobx)
-# ng-mobx
+# mobx-angularjs
 
-## MobX connector for Angular 1
-If you're looking for the Angular 2 version version, it's [here](https://github.com/mobxjs/mobx-angular)
+[![npm version](https://img.shields.io/npm/v/mobx-angularjs.svg?style=flat-square)](https://www.npmjs.com/package/mobx-angularjs)
+[![npm version](https://img.shields.io/npm/dw/mobx-angularjs.svg?style=flat-square)](https://www.npmjs.com/package/mobx-angularjs)
 
-Feel free to check out another fork of this repo here, which is currently more maintained:
-[https://github.com/mmlpxjs/mobx-angularjs](https://github.com/mmlpxjs/mobx-angularjs)
+## AngularJS connector to MobX
+This package is for Angular 1.x, if you're looking for the Angular 2+ version, it's [here](https://github.com/mobxjs/mobx-angular).
 
 MobX is a modern reactive state management library.
 
@@ -13,9 +12,13 @@ This simple library connects MobX to Angular.
 
 ## Why use MobX
 The advantages of MobX are:
-* Normalized - MobX lets you define computed values that are based on the minimal state
-* Reactivity - MobX Automatically figures out when to re-invoke subscribers according to which observables they use. This allows for extremely performant applications
-* Plain objects - Use plain objects and classes with MobX decorators, or even observe existing objects (from external sources for example)
+
+* __Normalized__ - MobX lets you define computed values that are based on the minimal state
+
+* __Reactivity__ - MobX Automatically figures out when to re-invoke subscribers according to which observables they use. This allows for extremely performant applications
+
+* __Plain objects__ - Use plain objects and classes with MobX decorators, or even observe existing objects (from external sources for example)
+
 * MobX is being used heavily in the community (mainly with React)
 
 <a href="http://mobxjs.github.io/mobx" target="_blank">Read more about MobX</a>
@@ -34,23 +37,23 @@ It will also dispose of the autorun callback when the scope is destroyed.
 
 Install:
 ```
-$ npm install --save ng-mobx
+$ npm install --save mobx-angularjs
 ```
 
-Import ng-mobx and include the module:
-```
-import ngMobx from 'ng-mobx';
+<br>
 
-angular.module('app', [
-  ...
-  ngMobx,
-  ...
-]);
+Import `mobx-angularjs` and include the module:
+```js
+import mobxAngular from 'mobx-angularjs';
+
+angular.module('app', [ mobxAngular ]);
 ```
+
+<br>
 
 Then use `mobx-autorun`:
-```
-import {store} from './store/counter';
+```js
+import { store } from './store/counter';
 
 angular.component('myComponent', {
   controller: () => this.store = store,
@@ -65,12 +68,24 @@ angular.component('myComponent', {
 ```
 
 ## Example
-See the `example` folder
 
-To run it, clone this repo and run:
+Clone this repository:
+
+```bash
+git clone https://github.com/nickbreaton/mobx-angularjs
+cd mobx-angularjs
 ```
-$ cd example
-$ npm install
-$ npm install -g kick
-$ kick s
+
+Install dependencies:
+
+```bash
+npm install
 ```
+
+Start example server:
+
+```bash
+npm run example
+```
+
+__Note:__ Example uses [parcel](https://parceljs.org/) which requires Node 8+

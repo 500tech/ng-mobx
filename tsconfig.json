@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "removeComments": true,
+    "declaration": true,
+    "outDir": "dist",
+    "experimentalDecorators": true
+  },
+  "files": [
+    "lib/mobx-angularjs.ts"
+  ]
+}
