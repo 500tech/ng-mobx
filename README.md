@@ -33,30 +33,44 @@ The directive will automatically re-run the $digest cycle on the scope, whenever
 
 It will also dispose of the autorun callback when the scope is destroyed.
 
-## Usage
+## Installation
 
-Install:
+Install, import, and include:
 ```
 $ npm install --save mobx-angularjs
 ```
 
-<br>
-
-Import `mobx-angularjs` and include the module:
 ```js
-import mobxAngular from 'mobx-angularjs';
+import mobxAngular from 'mobx-angularjs'
 
-angular.module('app', [ mobxAngular ]);
+angular.module('app', [ mobxAngular ])
 ```
 
-<br>
+### or
 
-Then use `mobx-autorun`:
+Use CDN and include:
+
+```html
+<!-- development -->
+<script src="https://unpkg.com/mobx-angularjs@1.5.0/dist/mobx-angularjs.js"></script>
+
+<!-- production -->
+<script src="https://unpkg.com/mobx-angularjs@1.5.0/dist/mobx-angularjs.min.js"></script>
+```
+
 ```js
-import { store } from './store/counter';
+angular.module('app', [ 'mobx-angularjs' ])
+```
+
+## Usage
+
+```js
+import { store } from './store'
 
 angular.component('myComponent', {
-  controller: () => this.store = store,
+  controller() {
+    this.store = store
+  },
   controllerAs: '$ctrl',
   template: `
     <div mobx-autorun>
@@ -64,28 +78,28 @@ angular.component('myComponent', {
       <button ng-click="$ctrl.store.action()">Action</button>
     </div>
   `
-});
+})
 ```
 
 ## Example
 
 Clone this repository:
 
-```bash
-git clone https://github.com/nickbreaton/mobx-angularjs
-cd mobx-angularjs
+```
+$ git clone https://github.com/mobxjs/mobx-angularjs
+$ cd mobx-angularjs
 ```
 
 Install dependencies:
 
-```bash
-npm install
+```
+$ npm install
 ```
 
 Start example server:
 
-```bash
-npm run example
+```
+$ npm run example
 ```
 
-__Note:__ Example uses [parcel](https://parceljs.org/) which requires Node 8+
+__Note:__ Example uses [Parcel](https://parceljs.org/) which requires Node 8+
