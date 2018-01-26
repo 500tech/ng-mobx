@@ -1,0 +1,7 @@
+/.gitignore
+/.travis.yml
+/example
+/lib
+/spec
+/tsconfig.json
+/yarn.lock
