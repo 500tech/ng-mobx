@@ -1,8 +1,8 @@
 {
   "name": "mobx-angularjs",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "AngularJS connector to MobX",
-  "main": "dist/mobx-angularjs.js",
+  "main": "dist/mobx-angularjs.umd.js",
   "typings": "dist/mobx-angularjs.d.ts",
   "author": "Adam Klein",
   "license": "MIT",
@@ -21,7 +21,8 @@
     "ng-mobx"
   ],
   "scripts": {
-    "build": "rimraf dist/* && tsc",
+    "prebuild": "rimraf dist/*",
+    "build": "webpack --env.type=umd && webpack --env.type=global && webpack -p --env.type=global.min",
     "example": "parcel example/index.html -o --no-cache --no-hmr -d node_modules/.example",
     "test": "jest"
   },
@@ -45,7 +46,9 @@
     "parcel-bundler": "^1.4.1",
     "rimraf": "^2.6.2",
     "ts-jest": "^22.0.1",
-    "typescript": "^2.6.2"
+    "ts-loader": "^3.3.1",
+    "typescript": "^2.6.2",
+    "webpack": "^3.10.0"
   },
   "jest": {
     "transform": {

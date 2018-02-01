@@ -1,6 +1,6 @@
 import { Count } from './fixtures/count-store'
 import * as angular from 'angular'
-import mobxAngular from '../lib/mobx-angularjs'
+import * as mobxAngular from '../lib/mobx-angularjs'
 
 import 'angular-mocks'
 
