@@ -8,7 +8,7 @@ const link: angular.IDirectiveLinkFn = ($scope) => {
 
   const dispose = reaction(
     () => [...$$watchers].map(watcher => watcher.get($scope)),
-    () => setTimeout($scope.$digest.bind($scope))
+    () => !$scope.$$phase && $scope.$digest()
   )
 
   $scope.$on('$destroy', dispose)
