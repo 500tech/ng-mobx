@@ -52,10 +52,10 @@ Use CDN and include:
 
 ```html
 <!-- development -->
-<script src="https://unpkg.com/mobx-angularjs@1.5.0/dist/mobx-angularjs.js"></script>
+<script src="https://unpkg.com/mobx-angularjs/mobx-angularjs.js"></script>
 
 <!-- production -->
-<script src="https://unpkg.com/mobx-angularjs@1.5.0/dist/mobx-angularjs.min.js"></script>
+<script src="https://unpkg.com/mobx-angularjs/mobx-angularjs.min.js"></script>
 ```
 
 ```js

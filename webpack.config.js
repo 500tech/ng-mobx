@@ -27,15 +27,11 @@ module.exports = ({ type }) => {
   switch (type) {
     case 'umd':
       config.output.libraryTarget = 'umd'
-      config.output.filename = `${name}.umd.js`
-      break
-    case 'global':
-      config.output.libraryTarget = 'jsonp'
       config.output.filename = `${name}.js`
       config.devtool = 'inline-source-map'
       break
-    case 'global.min':
-      config.output.libraryTarget = 'jsonp'
+    case 'umd.min':
+      config.output.libraryTarget = 'umd'
       config.output.filename = `${name}.min.js`
       break
   }

@@ -2,8 +2,8 @@
   "name": "mobx-angularjs",
   "version": "1.5.0",
   "description": "AngularJS connector to MobX",
-  "main": "mobx-angularjs.umd.js",
-  "typings": "mobx-angularjs.d.ts",
+  "main": "mobx-angularjs.js",
+  "typings": "index.d.ts",
   "author": "Adam Klein",
   "contributors": [
     "Nick Breaton",
@@ -26,7 +26,7 @@
   ],
   "scripts": {
     "prebuild": "rimraf dist/*",
-    "build": "npm run prebuild && webpack --env.type=umd && webpack --env.type=global && webpack -p --env.type=global.min",
+    "build": "npm run prebuild && webpack --env.type=umd && webpack -p --env.type=umd.min",
     "example": "parcel example/index.html -o --no-cache --no-hmr -d node_modules/.example",
     "pub": "npm test && npm run build && cp {README.md,package.json} dist && npm publish dist",
     "test": "jest"
