@@ -1,8 +1,0 @@
-/.gitignore
-/.travis.yml
-/example
-/lib
-/spec
-/tsconfig.json
-/webpack.config.js
-/yarn.lock
