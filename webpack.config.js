@@ -4,8 +4,8 @@ const name = 'mobx-angularjs'
 
 module.exports = ({ type }) => {
   const config = {
-    context: resolve(__dirname, 'lib'),
-    entry: './mobx-angularjs.ts',
+    context: resolve(__dirname, 'src'),
+    entry: './index.ts',
     module: {
       rules: [
         { 

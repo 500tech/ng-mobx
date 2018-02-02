@@ -7,6 +7,6 @@
     "experimentalDecorators": true
   },
   "files": [
-    "lib/mobx-angularjs.ts"
+    "src/index.ts"
   ]
 }

@@ -10,7 +10,7 @@ const link: angular.IDirectiveLinkFn = ($scope) => {
     () => [...$$watchers].map(watcher => watcher.get($scope)),
     () => setTimeout($scope.$digest.bind($scope))
   )
-  
+
   $scope.$on('$destroy', dispose)
 }
 
@@ -20,4 +20,4 @@ app.directive('mobxAutorun', () => ({
   link
 }))
 
-export default module.exports = app.name
+export default app.name
