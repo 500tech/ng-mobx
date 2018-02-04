@@ -26,7 +26,7 @@
   ],
   "scripts": {
     "prebuild": "rimraf dist/*",
-    "build": "npm run prebuild && webpack --env.type=umd && webpack -p --env.type=umd.min",
+    "build": "webpack --env.type=umd && webpack -p --env.type=umd.min",
     "example": "parcel example/index.html -o --no-cache --no-hmr -d node_modules/.example",
     "pub": "npm test && npm run build && cp {README.md,package.json} dist && npm publish dist",
     "test": "jest"
