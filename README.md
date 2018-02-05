@@ -35,8 +35,6 @@ The directive will automatically re-run the $digest cycle on the scope, whenever
 
 It will also dispose of the autorun callback when the scope is destroyed.
 
-**Remind that you should always mark your isolated scope block with `mobx-autorun` directive(such as `ng-if`) thus mobx can reactive with.**
-
 ## Installation
 
 Install, import, and include:
@@ -84,6 +82,8 @@ angular.component('myComponent', {
   `
 })
 ```
+
+**Important note:** Make sure you always mark your isolated scope block (such as `ng-if`) with the `mobx-autorun` directive so that MobX can react to it.
 
 ## Example
 
