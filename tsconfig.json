@@ -4,7 +4,8 @@
     "removeComments": true,
     "declaration": true,
     "outDir": "dist",
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "esModuleInterop": true
   },
   "files": [
     "src/index.ts"

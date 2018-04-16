@@ -1,5 +1,5 @@
 import { reaction } from 'mobx'
-import * as angular from 'angular'
+import angular  from 'angular'
 
 const app = angular.module('mobx-angularjs', [])
 
