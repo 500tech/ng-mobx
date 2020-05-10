@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2015",
     "removeComments": true,
     "declaration": true,
     "outDir": "dist",
     "experimentalDecorators": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "moduleResolution": "node"
   },
   "files": [
     "src/index.ts"
