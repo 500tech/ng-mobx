@@ -47,6 +47,7 @@
     "angular-mocks": "^1.6.8",
     "codecov": "^3.0.0",
     "jest": "^25.2.1",
+    "mobx": ">=5.15.4",
     "number-to-words": "^1.2.3",
     "parcel-bundler": "^1.12.4",
     "rimraf": "^2.6.2",
